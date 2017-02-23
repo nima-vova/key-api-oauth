@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+{% block header %}
+<head>
+<title>Welcome to my site friend</title>
+
+</head>
+{% endblock%}
+{% block body %}
+ <body>
+
+
+
+      <ul class="nav nav-tabs">
+          <li class="active"><a href="{{ path('homepage')}}">home</a></li>
+          <li><a href="{{ path('apikey')}}">go to key-api</a></li>
+          <li><a href="#">go to Oauth</a></li>
+
+
+      </ul>
+
+
+
+
+  </body>
+{% endblock%}
+{% block footer %}
+{% endblock%}
+</html>

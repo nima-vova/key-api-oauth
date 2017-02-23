@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\AppBundle\Entity\User\User;
 
 class DefaultController extends Controller
 {
@@ -14,8 +15,21 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
+        /*$user=$this->getDoctrine()
+            ->getRepository('AppBundle:User\User')
+            ->findUsernameByApiKey('237797');
+        //$username=$user->getUsername();
+        $username=$user[0]['username'];
+        dump($username); */
+        return $this->render('index.html.twig');
+    }
+    /**
+     * @Route("/api", name="apikey")
+     */
+    public function getApiKeyAction(Request $request)
+    {
+
+        //dump($this->get('security.token_storage')->getToken()->getUser());
+        return $this->render('index.html.twig');
     }
 }
