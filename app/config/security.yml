@@ -1,36 +1,53 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
+
 security:
 
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
 
+        api_key_user_provider:
+            id: api_key_user_provider
 
-#    firewalls:
-#        dev:
-#            pattern: ^/(_(profiler|wdt)|css|images|js)/
-#            security: false
     firewalls:
+
         secured_area:
             pattern: ^/api
             stateless: true
             simple_preauth:
-                authenticator: apikey_authenticator
+               authenticator: apikey_authenticator
             provider: api_key_user_provider
 
-    providers:
-        api_key_user_provider:
-            id: api_key_user_provider
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
 
-#        main:
-#            anonymous: ~
+        main:
+            pattern: ^/
 
-            # activate different ways to authenticate
+            oauth:
+                resource_owners:
+                    facebook:           "/login/check-facebook"
+                login_path:        /login
+                failure_path:      /login
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+                oauth_user_provider:
+                    #this is my custom user provider, created from FOSUBUserProvider - will manage the
+                    #automatic user registration on your site, with data from the provider (facebook. google, etc.)
+                    service: my_user_provider
+            logout:       true
+            anonymous:    true
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+        login:
+            pattern:  ^/login$
+            security: false
+
+
 
     access_control:
         - { path: ^/api, roles: ROLE_API }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }

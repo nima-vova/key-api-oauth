@@ -35,7 +35,8 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface
             throw new BadCredentialsException();
 
         }*/
-        if (!$apiKey){
+
+       if (!$apiKey){
 
            // throw new BadCredentialsException();
 

@@ -75,6 +75,33 @@ doctrine_migrations:
     table_name: migration_versions
     name: Application Migrations
 
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User\User
+
+    from_email:
+        address: you@example.com
+        sender_name: You
+
+hwi_oauth:
+    connect:
+            account_connector: my_user_provider
+    firewall_names: [main]
+    fosub:
+        username_iterations: 30
+        properties:
+           facebook:    facebookID
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           "%facebook_app_id%"
+            client_secret:       "%facebook_app_secret%"
+            scope:               "email"
+            options:
+                display: popup
+                auth_type: rerequest
 services:
     # ...
     apikey_authenticator:
