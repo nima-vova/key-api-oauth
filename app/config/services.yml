@@ -13,12 +13,3 @@ services:
         class: AppBundle\Security\ApiKeyUserProvider
         arguments: ["@doctrine"]
 
-    my_user_provider:
-        class: "%my_user_provider.class%"
-        #this is the place where the properties are passed to the UserProvider - see config.yml
-        arguments: ['@doctrine', { facebook: facebookID } ]
-
-    #my_user_provider:
-      #  class: "%my_user_provider.class%"
-        #this is the place where the properties are passed to the UserProvider - see config.yml
-     #   arguments: ['@fos_user.user_manager', { facebook: facebookID } , '@doctrine']

@@ -4,7 +4,7 @@ namespace AppBundle\Entity\User;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use FOS\UserBundle\Model\User as BaseUser;
+
 
 /**
  * User

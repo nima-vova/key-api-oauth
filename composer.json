@@ -30,7 +30,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "hwi/oauth-bundle": "^0.5.3"
+        "knpuniversity/oauth2-client-bundle": "^1.9",
+        "league/oauth2-facebook": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

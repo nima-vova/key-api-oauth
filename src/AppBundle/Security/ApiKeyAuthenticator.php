@@ -38,17 +38,9 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface
 
        if (!$apiKey){
 
-           // throw new BadCredentialsException();
+            throw new BadCredentialsException();
 
-            $Key=rand(100000,500000);
-            $apiKey=(string) $Key;
-            $user= new User();
-            $user->setUsername('anon.');
-            $user->setApiKey($apiKey);
-            //$user=$this->registry->getManager()
-            $em = $this->registry->getManager();
-            $em->persist($user);
-            $em->flush();
+
 
 
 

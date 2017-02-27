@@ -13,14 +13,16 @@
 
       <ul class="nav nav-tabs">
           <li class="active"><a href="{{ path('homepage')}}">home</a></li>
-          <li><a href="{{ path('apikey')}}">go to key-api</a></li>
-          <li><a href="#">go to Oauth</a></li>
+          <li><a href="{{ path('apikey')}}"> authorization key-api</a></li>
+          <li><a href="{{ path('connect_facebook')}}">authorization facebook</a></li>
+          <li><a href="{{ path('secret_part')}}">login secret part</a></li>
+
 
 
       </ul>
 
 <br>
-      <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}" alt="Sign in with Facebook">Sign in with Facebook</a>
+
 
 
   </body>
