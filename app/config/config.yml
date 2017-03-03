@@ -88,8 +88,18 @@ knpu_oauth2_client:
             # the route that you're redirected to after
             # see the controller example below
             redirect_route: connect_facebook_check
-            redirect_params: {}
+            redirect_params: {email:'email'}
             graph_api_version: v2.8
+
+        vkontakte:
+            # must be "vkontakte" - it activates that type!
+            type: vkontakte
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: "%vk_id%"
+            client_secret: "%vk_secret%"
+            # a route name you'll create
+            redirect_route: connect_vkontakte_check
+            redirect_params: {}
 
 
 
