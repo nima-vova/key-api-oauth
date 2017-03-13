@@ -3,6 +3,9 @@
 parameters:
 #    parameter_name: value
     my_user_provider.class: AppBundle\Security\Core\User\OAuthUserProvider
+    #id_app_facebook: 156169728227865
+    #secret_id: 38375a80032be5d22e136f32b7f37c47
+    graf_version: v2.8
 
 services:
 #    service_name:
@@ -13,3 +16,6 @@ services:
         class: AppBundle\Security\ApiKeyUserProvider
         arguments: ["@doctrine"]
 
+    service_facebook_sdk:
+        class: AppBundle\Services\FacebookSdk
+        arguments: ["%id_app_facebook%","%secret_id%","%graf_version%"]

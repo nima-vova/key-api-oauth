@@ -30,9 +30,6 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "knpuniversity/oauth2-client-bundle": "^1.9.0",
-        "league/oauth2-facebook": "^1.1",
-        "j4k/oauth2-vkontakte": "^1.1",
         "facebook/graph-sdk" : "~5.0"
     },
     "require-dev": {
