@@ -47,19 +47,22 @@ class FacebookController extends Controller
         //echo 'Logged in as ' . $me->getName();
 
 */
-        $accessToken = $request->headers->get('token');
+        //$accessToken = $request->headers->get('token');
         $UserFacebook = $this->get('service_facebook_sdk');
-        $UserFacebook->setValue($accessToken);
+
+        $UserFacebook->setValue(null);
+
+        //$UserFacebook->setValue($accessToken);
         $UserFacebook = $UserFacebook->getValue();
         dump($UserFacebook);
-        echo $UserFacebook->getEmail();
+        echo $UserFacebook->getId();
 
         $Key=rand(100000,500000);
         $apiKey=(string) $Key;
 
         $em=$this->getDoctrine()->getManager();
         $userFind = $em->getRepository('AppBundle:User\User')
-            ->findUserByUserName($UserFacebook->getEmail());
+            ->findUserByFacebookId($UserFacebook->getId());
         if($userFind){
             $userRefreshApikey = $em->getRepository('AppBundle:User\User')
                 ->find($userFind[0]['id']);
@@ -76,8 +79,8 @@ class FacebookController extends Controller
 
 
             $user= new User();
-            $user->setUsername($UserFacebook);
-
+            $user->setUsername($UserFacebook->getEmail());
+            $user->setFacebookID($UserFacebook->getId());
             $Key=rand(100000,500000);
             $apiKey=(string) $Key;
             $user->setApiKey($apiKey);

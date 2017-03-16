@@ -21,13 +21,13 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         //->getResult();
         return $qb->getQuery()->getResult();
     }
-    public $name;
-    public function findUserByUserName($name){
+    public $id;
+    public function findUserByFacebookId($id){
         $qb = $this->createQueryBuilder('u');
-        $qb->select('u.username','u.id')
+        $qb->select('u.id, u.username, u.facebookID')
             // ->from('User', 'u')
-            ->where('u.username =:name')
-            ->setParameter('name', $name);
+            ->where('u.facebookID =:name')
+            ->setParameter('name', $id);
         //->getQuery()
         //->getResult();
         return $qb->getQuery()->getResult();
