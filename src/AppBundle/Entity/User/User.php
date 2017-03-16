@@ -40,16 +40,11 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
+     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true, unique=true)
      */
     private $facebookID;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="socialka_token", type="string", length=255, nullable=true)
-     */
-    private $socialkaToken;
+
 
     /**
      * Get id
@@ -152,27 +147,5 @@ public function eraseCredentials()
         return $this->username;
     }
 
-    /**
-     * Set socialkaToken
-     *
-     * @param string $socialkaToken
-     *
-     * @return User
-     */
-    public function setSocialkaToken($socialkaToken)
-    {
-        $this->socialkaToken = $socialkaToken;
 
-        return $this;
-    }
-
-    /**
-     * Get socialkaToken
-     *
-     * @return string
-     */
-    public function getSocialkaToken()
-    {
-        return $this->socialkaToken;
-    }
 }

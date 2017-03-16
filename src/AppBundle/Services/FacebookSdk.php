@@ -29,8 +29,8 @@ class FacebookSdk
          'app_secret' => $this->appSecret,
          'default_graph_version' => $this->graf_version,
      ]);
-      //$helper = $fb->getJavaScriptHelper();
-     //$accessToken = $helper->getAccessToken();
+      $helper = $fb->getJavaScriptHelper();
+     $accessToken = $helper->getAccessToken();
      //dump($accessToken);
      //$accessToken = $request->headers->get('token');
 
